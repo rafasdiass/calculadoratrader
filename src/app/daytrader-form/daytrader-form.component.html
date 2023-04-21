@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="deposito">Depósito:</label>
+      <input id="deposito" type="number" formControlName="deposito" />
+    </div>
+    <div>
+      <label for="metaDiaria">Meta diária (%):</label>
+      <input id="metaDiaria" type="number" formControlName="metaDiaria" />
+    </div>
+    <div>
+      <label for="payout">Payout da corretora:</label>
+      <input id="payout" type="number" formControlName="payout" />
+    </div>
+    <button type="submit">Calcular</button>
+  </form>
+  
+  <div *ngIf="resultados">
+    <h3>Resultados:</h3>
+    <p>Banca Inicial: {{ resultados.bancaInicial | currency:'BRL' }}</p>
+  
+    <h4>Primeiras Entradas:</h4>
+    <ol>
+      <li *ngFor="let entrada of resultados.primeirasEntradas">{{ entrada | currency:'BRL' }}</li>
+    </ol>
+  </div>
+  

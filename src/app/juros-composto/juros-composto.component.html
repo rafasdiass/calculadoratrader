@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]="jurosForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="capital">Valor inicial</label>
+        <input type="number" class="form-control" id="capital" formControlName="capital" required>
+      </div>
+      <div class="form-group">
+        <label for="taxa">Taxa de juros</label>
+        <input type="number" class="form-control" id="taxa" formControlName="taxa" required>
+      </div>
+      <div class="form-group">
+        <label for="tempo">Tempo (meses)</label>
+        <input type="number" class="form-control" id="tempo" formControlName="tempo" required>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!jurosForm.valid">Calcular</button>
+    </form>
+    <hr>
+    <h3>Resultado:</h3>
+    <p>Valor Inicial: {{ valorInicial | currency:'BRL' }}</p>
+    <p>Valor Final: {{ valorFinal | currency:'BRL' }}</p>
+    <p>Taxa de Juros Composto: {{ taxaJurosComposto | number:'1.2-2' }}%</p>
+    <h4>Entradas:</h4>
+    <ul>
+      <li *ngFor="let entrada of entradas">{{ entrada | currency:'BRL' }}</li>
+    </ul>
+  </div>
+  
